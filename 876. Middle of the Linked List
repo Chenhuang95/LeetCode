@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        
+ if(head == null || head.next == null){
+            return head;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){//×：slow != null
+      //快指针步长为2 ，慢指针步长为1。 当快指针走到头，慢指针恰好到中点。
+      //故：循环终止条件应该为 快指针的下个/下下个结点为null
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+        
+        
+    }
+}
