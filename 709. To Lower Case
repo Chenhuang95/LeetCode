@@ -6,7 +6,7 @@ class Solution {
         for(i = 0;i<str.length();i++)
         {
             ascii = (int)str.charAt(i);
-            if(ascii<91)
+            if((ascii<91)&(ascii>64))
             {
                 out.append((char)(ascii+32));
             }
