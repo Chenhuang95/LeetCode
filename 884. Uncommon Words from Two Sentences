@@ -1,0 +1,61 @@
+class Solution {
+    public String[] uncommonFromSentences(String A, String B) {
+        Map<String, Integer> count = new HashMap();
+        for (String word: A.split(" "))
+            count.put(word, count.getOrDefault(word, 0) + 1);
+        for (String word: B.split(" "))
+            count.put(word, count.getOrDefault(word, 0) + 1);
+
+        List<String> ans = new LinkedList();
+        for (String word: count.keySet())
+            if (count.get(word) == 1)
+                ans.add(word);
+
+        return ans.toArray(new String[ans.size()]);
+    }
+}
+
+
+
+class Solution {
+    public String[] uncommonFromSentences(String A, String B) {
+          List<String> output = new ArrayList();
+
+        String []A_S = A.split(" ");
+        String []B_S = B.split(" ");
+
+
+        menthod(A_S,B_S,output);
+        menthod(B_S,A_S,output);
+  return output.toArray(new String[output.size()]);  
+    }
+    
+       public static void menthod(String[] A_S,String[] B_S,List<String> output)
+    {
+        for(int i =0;i< A_S.length;i++)
+        { int temp = 0 ;
+            for(int j = 0;j<A_S.length;j++)
+            {
+                if(A_S[i].equals(A_S[j]) )
+                {
+                    temp++;
+                }
+            }
+            if (temp==1)
+            {
+                for(int j = 0;j<B_S.length;j++)
+                {
+                    if(A_S[i].equals(B_S[j]) )
+                    {
+                        temp++;
+                    }
+                }
+            }
+            if (temp==1)
+            {
+                output.add(A_S[i]);
+            }
+        }
+    }
+    
+}
